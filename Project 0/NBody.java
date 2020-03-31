@@ -1,5 +1,5 @@
 public class NBody {
-    /** Return a double corresponding to the radius of the universe in a given file. */
+    /** Returns a double corresponding to the radius of the universe in a given file. */
     public static double readRadius(String fileName) {
         In in = new In(fileName);
         int number = in.readInt();
@@ -7,7 +7,7 @@ public class NBody {
         return radius;
     }
 
-    /** Return an array of Bodys corresponding to the bodies in a given file. */
+    /** Returns an array of Bodys corresponding to the bodies in a given file. */
     public static Body[] readBodies(String fileName) {
         In in = new In(fileName);
         int number = in.readInt();
@@ -25,21 +25,21 @@ public class NBody {
         return planets;
     }
 
-    /** Draw the initial universe state. */
+    /** Draws the initial universe state. */
     public static void main(String[] args) {
-        /** Collect all needed input. */
+        /** Collects all needed input. */
         double T = Double.parseDouble(args[0]);
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
         Body[] planets = NBody.readBodies(filename);
         double radius = NBody.readRadius(filename);
 
-        /** Draw the background. */
+        /** Draws the background. */
         StdDraw.setScale(-radius, radius);
         StdDraw.clear();
         StdDraw.picture(0, 0, "images/starfield.jpg");
 		
-        /** Draw all bodies. */
+        /** Draws all bodies. */
         for (Body planet: planets) {
             planet.draw();
         }
@@ -48,33 +48,33 @@ public class NBody {
 
         double t = 0;
         while (t <= T) {
-            /** Create an xForces array and yForces array. */
+            /** Creates an xForces array and yForces array. */
             double[] xForces = new double[planets.length];
             double[] yForces = new double[planets.length];
 
-            /** Calculate the net x and y forces for each Body. */
+            /** Calculates the net x and y forces for each Body. */
             for (int i = 0; i < planets.length; i++) {
                 xForces[i] = planets[i].calcNetForceExertedByX(planets);
                 yForces[i] = planets[i].calcNetForceExertedByY(planets);
             }
 
-            /** Update each body. */
+            /** Updates each body. */
             for (int i = 0; i < planets.length; i++) {
                 planets[i].update(dt, xForces[i], yForces[i]);
             }
 
-            /** Draw the background image. */
+            /** Draws the background image. */
             StdDraw.picture(0, 0, "images/starfield.jpg");
 
-            /** Draw all bodies. */
+            /** Draws all bodies. */
             for (Body planet: planets) {
                 planet.draw();
             }
 
-            /** Show the offscreen buffer. */
+            /** Shows the offscreen buffer. */
             StdDraw.show();
 
-            /** Pause the animation for 10 milliseconds. */
+            /** Pauses the animation for 10 milliseconds. */
             StdDraw.pause(10);
             
             t += dt;
