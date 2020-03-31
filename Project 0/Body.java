@@ -27,7 +27,7 @@ public class Body {
         imgFileName = b.imgFileName;
     }
     
-    /** Calculate the distance between this and b2. */
+    /** Calculates the distance between this and b2. */
     public double calcDistance(Body b2) {
         double dx = this.xxPos - b2.xxPos;
         double dy = this.yyPos - b2.yyPos;
@@ -35,7 +35,7 @@ public class Body {
         return r;
     }
 
-    /** Calculate the force exerted on this by b2. */
+    /** Calculates the force exerted on this by b2. */
     public double calcForceExertedBy(Body b2) {
         double g = 6.67e-11;
         double r = this.calcDistance(b2);
@@ -43,7 +43,7 @@ public class Body {
         return f;
     }
 
-    /** Calculate the force exerted on this by b2 in the X direction. */
+    /** Calculates the force exerted on this by b2 in the X direction. */
     public double calcForceExertedByX(Body b2) {
         double f = this.calcForceExertedBy(b2);
         double dx = b2.xxPos - this.xxPos;
@@ -52,7 +52,7 @@ public class Body {
         return fx;
     }
 
-    /** Calculate the force exerted on this by b2 in the Y direction. */
+    /** Calculates the force exerted on this by b2 in the Y direction. */
     public double calcForceExertedByY(Body b2) {
         double f = this.calcForceExertedBy(b2);
         double dy = b2.yyPos - this.yyPos;
@@ -61,7 +61,7 @@ public class Body {
         return fy;
     }
 
-    /** Calculate the net X force exerted on this by all bodies in the array. */
+    /** Calculates the net X force exerted on this by all bodies in the array. */
     public double calcNetForceExertedByX(Body[] bodyarray) {
         double fX = 0;
         for (Body b: bodyarray) {
@@ -72,7 +72,7 @@ public class Body {
         return fX;
     }
 
-    /** Calculate the net Y force exerted on this by all bodies in the array. */
+    /** Calculates the net Y force exerted on this by all bodies in the array. */
     public double calcNetForceExertedByY(Body[] bodyarray) {
         double fY = 0;
         for (Body b: bodyarray) {
@@ -83,7 +83,7 @@ public class Body {
         return fY;
     }
 
-    /** Update the body’s position and velocity instance variables. */
+    /** Updates the body’s position and velocity instance variables. */
     public void update(double dt, double fX, double fY) {
         double ax = fX / this.mass;
         double ay = fY / this.mass;
@@ -93,7 +93,7 @@ public class Body {
         this.yyPos += this.yyVel * dt;
     }
 
-    /** Draw this at its appropriate position. */
+    /** Draws this at its appropriate position. */
     public void draw() {
         StdDraw.picture(this.xxPos, this.yyPos, "images/" + this.imgFileName);
     }
