@@ -98,3 +98,4 @@ public class Body {
         StdDraw.picture(this.xxPos, this.yyPos, "images/" + this.imgFileName);
     }
 }
+
