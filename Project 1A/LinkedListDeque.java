@@ -123,3 +123,4 @@ public class LinkedListDeque<Offer> {
         return getRecursive(index, sentinel.next);
     }
 }
+
