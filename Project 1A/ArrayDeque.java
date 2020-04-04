@@ -17,7 +17,7 @@ public class ArrayDeque<Item> {
         return size == items.length;
     }
 
-    /** Decides whether to downsize the deque. */
+    /** Returns true if deque is sparse, false otherwise. */
     private boolean isSparse() {
         return items.length >= 16 && size < (items.length / 4);
     }
