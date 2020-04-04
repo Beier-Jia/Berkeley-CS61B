@@ -22,12 +22,12 @@ public class ArrayDeque<Item> {
         return items.length >= 16 && size < (items.length / 4);
     }
 
-    /** computes the index immediately “after” a given index. */
+    /** Computes the index immediately “after” a given index. */
     private int plusOne(int index) {
         return (index + 1) % items.length;
     }
 
-    /** computes the index immediately “before” a given index. */
+    /** Computes the index immediately “before” a given index. */
     private int minusOne(int index) {
         return (index - 1 + items.length) % items.length;
     }
