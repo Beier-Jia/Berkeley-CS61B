@@ -12,7 +12,7 @@ public class ArrayDeque<Item> {
         nextLast = 1;
     }
 
-    /** Returns true if deque is empty, false otherwise. */
+    /** Returns true if deque is full, false otherwise. */
     private boolean isFull() {
         return size == items.length;
     }
