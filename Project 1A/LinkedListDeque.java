@@ -1,10 +1,10 @@
-public class LinkedListDeque<Offer> {
+public class LinkedListDeque<Item> {
     private class StuffNode {
         public StuffNode prev;
-        public Offer item;
+        public Item item;
         public StuffNode next;
 
-        public StuffNode(StuffNode p, Offer i, StuffNode n) {
+        public StuffNode(StuffNode p, Item i, StuffNode n) {
             prev = p;
             item = i;
             next = n;
@@ -23,14 +23,14 @@ public class LinkedListDeque<Offer> {
     }
 
     /** Adds x to the front of the deque. */
-    public void addFirst(Offer x) {
+    public void addFirst(Item x) {
         sentinel.next = new StuffNode(sentinel, x, sentinel.next);
         sentinel.next.next.prev = sentinel.next;
         size += 1;
     }
 
     /**  Adds x to the back of the deque. */
-    public void addLast(Offer x) {
+    public void addLast(Item x) {
         sentinel.prev = new StuffNode(sentinel.prev, x, sentinel);
         sentinel.prev.prev.next = sentinel.prev;
         size += 1;
@@ -57,11 +57,11 @@ public class LinkedListDeque<Offer> {
 
     /** Removes and returns the item at the front of the deque.
      * If no such item exists, returns null. */
-    public Offer removeFirst() {
+    public Item removeFirst() {
         if (size == 0) {
             return null;
         } else {
-            Offer x = sentinel.next.item;
+            Item x = sentinel.next.item;
             sentinel.next.next.prev = sentinel;
             sentinel.next = sentinel.next.next;
             size -= 1;
@@ -71,11 +71,11 @@ public class LinkedListDeque<Offer> {
 
     /** Removes and returns the item at the back of the deque.
      * If no such item exists, returns null. */
-    public Offer removeLast() {
+    public Item removeLast() {
         if (size == 0) {
             return null;
         } else {
-            Offer x = sentinel.prev.item;
+            Item x = sentinel.prev.item;
             sentinel.prev.prev.next = sentinel;
             sentinel.prev = sentinel.prev.prev;
             size -= 1;
@@ -84,7 +84,7 @@ public class LinkedListDeque<Offer> {
     }
 
     /** Gets the item at the given index. */
-    public Offer get(int index) {
+    public Item get(int index) {
         StuffNode p = sentinel.next;
         if ((index == 0) || (index >= size)) {
             return null;
@@ -104,19 +104,19 @@ public class LinkedListDeque<Offer> {
         size = 0;
 
         for (int i = 0; i < other.size(); i++) {
-            addLast((Offer) other.get(i));
+            addLast((Item) other.get(i));
         }
     }
 
     /** Gets the item at the given index using recursion. */
-    private Offer getRecursive(int index, StuffNode p) {
+    private Item getRecursive(int index, StuffNode p) {
         if (index == 0) {
             return p.item;
         }
         return getRecursive(index - 1, p.next);
     }
 
-    public Offer getRecursive(int index) {
+    public Item getRecursive(int index) {
         if (index > size) {
             return null;
         }
